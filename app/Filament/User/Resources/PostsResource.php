@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Tables\Columns\Layout\Split;
 use Filament\Tables\Filters\SelectFilter;
-use Filament\Actions\CreateAction;
+use Filament\Tables\Actions\CreateAction;
 use Filament\Forms\Components\TextInput;
 class PostsResource extends Resource
 {
@@ -38,29 +38,28 @@ class PostsResource extends Resource
             ->columns([
                 Split::make([               
                 Tables\Columns\ImageColumn::make('post')->size(100)->grow(false),
-                Tables\Columns\TextColumn::make('name')->label('Author'), 
+                Tables\Columns\TextColumn::make('user.name')->label('Author'), 
                 Tables\Columns\TextColumn::make('post description'),
                 //
             ]),])
             ->filters([
-                SelectFilter::make('published')->options([1 => 'published', 0 => 'Draft'])
+                SelectFilter::make('earth')->options([1 => 'published', 0 => 'Draft'])
                
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                 CreateAction::make()->model(comments::class)->form([
-                 TextInput::make('comment')
-        ->maxLength(25),
     // ...
 ])
 
-            ])
+            
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+
+
     }
 
     public static function getRelations(): array

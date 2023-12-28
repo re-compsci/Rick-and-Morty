@@ -12,6 +12,8 @@ class Comments extends Model
     use HasFactory;
     protected $fillable = [
         'post_comment',
+        'user_id',
+        'post_id'
     ];
 
 

@@ -12,7 +12,9 @@ class Posts extends Model
     protected $fillable = [
         'post description',
         'post',
-        'published',
+        'earth',
+        'user_id',
+        'type'
     
 
 
@@ -20,7 +22,7 @@ class Posts extends Model
     ];
 
     protected $casts = [
-        'published' => 'boolean',
+        'earth' => 'boolean',
     ];
 
     public function user(): BelongsTo
@@ -32,4 +34,6 @@ class Posts extends Model
     {
         return $this->hasMany(Comments::class);
     }
+
+
 }

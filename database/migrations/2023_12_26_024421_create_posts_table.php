@@ -14,10 +14,14 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id()->primary;       
             $table->string('post description')->nullable();
-            $table->string('published');
+            $table->string('rm')->nullable();
             $table->string('post')->nullable();
+            $table->string('type')->nullable();
             $table->timestamps();
-            //$table->uuid('ui')->useCurrent()-> //->get('name');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('id');
+         
+        
         });
     }
 

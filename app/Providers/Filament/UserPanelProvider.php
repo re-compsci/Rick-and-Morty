@@ -25,9 +25,30 @@ class UserPanelProvider extends PanelProvider
         return $panel
             ->id('user')
             ->path('user')
+            ->login()
+            ->registration()
+            ->profile()
+            ->topNavigation()
+           // ->defaultAvatarProvider(BoringAvatarsProvider::class)
             ->colors([
-                'primary' => Color::Amber,
+                'primary' =>  [
+                    50 => '238, 242, 255',
+                    100 => '224, 231, 255',
+                    200 => '199, 210, 254',
+                    300 => '165, 180, 252',
+                    400 => '129, 140, 248',
+                    500 => '99, 102, 241',
+                    600 => '79, 70, 229',
+                    700 => '67, 56, 202',
+                    800 => '55, 48, 163',
+                    900 => '49, 46, 129',
+                    950 => '30, 27, 75',
+                ],//Color::Amber,
             ])
+            
+            ->brandLogo(asset('https://www.freepnglogos.com/uploads/rick-and-morty-png/rick-and-morty-portal-shoes-white-clothing-zavvi-23.png'))
+            ->brandLogoHeight('6rem')
+            
             ->discoverResources(in: app_path('Filament/User/Resources'), for: 'App\\Filament\\User\\Resources')
             ->discoverPages(in: app_path('Filament/User/Pages'), for: 'App\\Filament\\User\\Pages')
             ->pages([
@@ -37,6 +58,7 @@ class UserPanelProvider extends PanelProvider
             ->widgets([
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,
+                
             ])
             ->middleware([
                 EncryptCookies::class,
