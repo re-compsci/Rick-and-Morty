@@ -24,15 +24,30 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
-           // ->domain('admin.example.com')
             ->id('admin')
             ->path('admin')
             ->login()
             ->profile()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => [
+                    50=> '#F5F5F5',
+                    100=> '#EBEBEB',
+                    200=> '#DADADA',
+                    300=> '#C8C8C8',
+                    400=> '#B6B6B6',
+                    500=> '#A4A4A4',
+                    600=> '#929292',
+                    700=> '#808080',
+                    800=> '#6E6E6E',
+                    900=> '#5C5C5C',
+                    950=> '#4A4A4A',
+            
+            ]
+                
+                
+                //Color::Amber,
             ])
-            ->brandLogo(asset('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBYrDseRtQi_jtauc9EzsSjmK7t8dGId7ZRA&usqp=CAU'))
+            ->brandLogo(asset('https://www.freepnglogos.com/uploads/rick-and-morty-png/list-rick-and-morty-episodes-wikipedia-24.png'))
             ->brandLogoHeight('6rem')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')

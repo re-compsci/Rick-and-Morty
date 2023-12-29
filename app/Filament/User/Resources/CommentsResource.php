@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\User\Resources;
 
-use App\Filament\Resources\CommentsResource\Pages;
-use App\Filament\Resources\CommentsResource\RelationManagers;
+use App\Filament\User\Resources\CommentsResource\Pages;
+use App\Filament\User\Resources\CommentsResource\RelationManagers;
 use App\Models\Comments;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -16,13 +16,14 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class CommentsResource extends Resource
 {
     protected static ?string $model = Comments::class;
+
     protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-left-ellipsis';
-    protected static ?string $navigationGroup = 'Manage Content';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
+              
                 //
             ]);
     }
@@ -43,7 +44,7 @@ class CommentsResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

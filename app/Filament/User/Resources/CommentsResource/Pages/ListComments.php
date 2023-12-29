@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\CommentsResource\Pages;
+namespace App\Filament\User\Resources\CommentsResource\Pages;
 
-use App\Filament\Resources\CommentsResource;
+use App\Filament\User\Resources\CommentsResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 

@@ -11,6 +11,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components;
 use Filament\Resources\Resource;
 use Filament\Resources\IconColumn;
+//use Filament\Resources\TextInput;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -22,35 +23,36 @@ use Filament\Tables\Filters\QueryBuilder\Constraints\TextConstraint;
 use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\QueryBuilder;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 
 
 class PostsResource extends Resource
 {
     protected static ?string $model = Posts::class;
     protected static ?string $navigationLabel = 'Posts';
-
     protected static ?string $navigationIcon = 'heroicon-o-photo';
-
     protected static ?string $modelLabel = 'Post';
+    protected static ?string $navigationGroup = 'Manage Content';
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Section::make()->schema([
-                Checkbox::make('earth')->label('On Earth'),    
-                Forms\Components\TextInput::make('post description'),
-                Select::make('type')
-
-    ->options([
-          'human' => 'Human',
-          'alien' => 'Alien',
-          'animal'=> 'Animal',
-          'robot'=>'Robot',
-          'other'=>'Other'
-    ])->native(false) ,
-                Forms\Components\FileUpload::make('post')->required()->image()->imageEditor(),
-  
-            ])
+                Section::make()->schema([         
+                     TextInput::make('char')->label('Character Name'),
+                     TextInput::make('post description'),   
+                     Checkbox::make('earth')->label('On Earth'), 
+                     Select::make('type')->options([
+                     'human' => 'Human',
+                     'alien' => 'Alien',
+                     'animal'=> 'Animal',
+                     'robot'=>'Robot',
+                     'other'=>'Other'])->native(false) ,
+         
+                     FileUpload::make('post')->required()->image()->imageEditor(),
+         
+                ]),
+             
                 
     ]);
     }
@@ -60,7 +62,8 @@ class PostsResource extends Resource
         return $table
             ->columns([
              
-                Tables\Columns\TextColumn::make('user.name')->label('Author'),//->exists('user'), 
+                Tables\Columns\TextColumn::make('user.name')->label('Author'),
+                Tables\Columns\TextColumn::make('char')->label('Character Name'), 
                 Tables\Columns\TextColumn::make('post description') ,
                 Tables\Columns\ImageColumn::make('post')->size(90),
                 Tables\Columns\TextColumn::make('type')->badge()->color(fn (string $state): string => match ($state) {

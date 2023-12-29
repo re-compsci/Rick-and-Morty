@@ -22,4 +22,9 @@ class Comments extends Model
         return $this->BelongsTo(Posts::class);
     }
 
+    public function user(): BelongsTo
+    {
+        return $this->BelongsTo(User::class);
+    }
+
 }

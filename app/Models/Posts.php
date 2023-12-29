@@ -14,7 +14,8 @@ class Posts extends Model
         'post',
         'earth',
         'user_id',
-        'type'
+        'type',
+        'char'
     
 
 

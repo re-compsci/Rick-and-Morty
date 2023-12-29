@@ -12,7 +12,7 @@ class CreateComments extends CreateRecord
    protected function UserComment(array $data): array
    {
        $data['user_id'] = auth()->id();
-       $data['post_id'] = $this->post_id; 
+       $data['post_id'] =  $this->post_id; 
     
        return $data;
    }
